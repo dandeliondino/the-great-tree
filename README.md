@@ -1,5 +1,4 @@
-# The Great Tree
-## by dandeliondino
+# The Great Tree by dandeliondino
 
 A short retro adventure game created for [Kenney Jam 2022](https://itch.io/jam/kenney-jam-2022), a 48-hour game jam with a theme of "Growth". Created with Godot 3.5 and Ink.
 
@@ -39,4 +38,4 @@ If you're interested in the Ink/GDScript integration, relevant files include:
 - This project uses a second viewport to render the HUD at a higher resolution than the game world (allowing more flexibility for text) using the technique from ["How I Made The Smoothest Pixel Art Camera"](https://youtu.be/LoR4Xg1l29U) by Nesi
 
 ## License
-Public domain. Please adapt any code used here with no source/credit needed. Assets included in this repository are public domain from [Kenney](https://www.kenney.nl/). Some music/audio assets included in the published game are CC-BY licensed and are not included here.
+The code in this repository is public domain. Please adapt it with no source/credit needed. Assets included in this repository are public domain from [Kenney](https://www.kenney.nl/). Some music/audio assets included in the published game are CC-BY licensed and are not included here.
