@@ -13,6 +13,7 @@ data_*/
 # Ignore addons
 addons/
 ink-engine-runtime.dll
+interface/interactable_object/materials/pixel_outline_shader.tres
 
 # Ignore sound files
 interace/music/
