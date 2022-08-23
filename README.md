@@ -1,15 +1,17 @@
 # The Great Tree
+## by dandeliondino
 
-A short retro adventure game created for [Kenney Jam 2022](), a 48-hour game jam with a theme of "Growth".
-Created with Godot 3.5 and Ink
+A short retro adventure game created for [Kenney Jam 2022](https://itch.io/jam/kenney-jam-2022), a 48-hour game jam with a theme of "Growth".
 
-[Html5 game and windows exe on itch.io](https://dandeliondino.itch.io/the-great-tree)
+Created with Godot 3.5 and Ink.
+
+[Play in browser or download on itch.io](https://dandeliondino.itch.io/the-great-tree)
 
 If you're looking for the Ink/GDScript integration, relevant files include:
-- story.ink (comment out the "-> DONE" to run in ink)
-- ink_manager.gd
-- dialogue_container.gd
-- quest_container.gd
+- [storyline.ink](https://github.com/dandeliondino/the-great-tree/blob/master/project/interface/dialogue/storyline.ink) (comment out the "-> DONE" to run in ink, it *sort of* works)
+- [ink_manager.gd](https://github.com/dandeliondino/the-great-tree/blob/master/project/scripts/ink_manager.gd)
+- [dialogue_container.gd](https://github.com/dandeliondino/the-great-tree/blob/master/project/interface/dialogue/dialogue_container.gd)
+- [journal_panel.gd](https://github.com/dandeliondino/the-great-tree/blob/master/project/interface/journal/journal_panel.gd)
 
 ## Additional downloads
 ### Required addons:
@@ -18,8 +20,6 @@ If you're looking for the Ink/GDScript integration, relevant files include:
 
 ### Recommended addons:
 - [integer_resolution_handler](https://github.com/Yukitty/godot-addon-integer_resolution_handler)
-
-### Recommended tools:
 - [godot-color-palette](https://github.com/EricEzaM/godot-color-palette)
 
 ## Credits
