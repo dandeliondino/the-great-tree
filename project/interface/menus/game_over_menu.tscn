@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://interface/menus/menu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://interface/signal_canvas_item.gd" type="Script" id=2]
+[ext_resource path="res://interface/fonts/title_medium_font.tres" type="DynamicFont" id=3]
+
+[node name="GameOverMenu" instance=ExtResource( 1 )]
+
+[node name="HeaderContainer" parent="." index="0"]
+margin_bottom = 71.0
+
+[node name="Label" parent="HeaderContainer" index="0"]
+margin_bottom = 71.0
+text = "GAME OVER"
+
+[node name="ContentContainer" parent="." index="1"]
+margin_top = 71.0
+margin_bottom = 142.0
+size_flags_vertical = 3
+
+[node name="WinLabel" type="Label" parent="ContentContainer" index="0"]
+margin_left = 58.0
+margin_right = 192.0
+margin_bottom = 71.0
+size_flags_horizontal = 4
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0.701961, 0.647059, 0.333333, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "You won!"
+script = ExtResource( 2 )
+show_signal = "game_over_win_requested"
+hide_signal = "game_over_lose_requested"
+
+[node name="LoseLabel" type="Label" parent="ContentContainer" index="1"]
+visible = false
+margin_left = 40.0
+margin_right = 210.0
+margin_bottom = 71.0
+size_flags_horizontal = 4
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 3 )
+text = "You lost..."
+script = ExtResource( 2 )
+show_signal = "game_over_lose_requested"
+hide_signal = "game_over_win_requested"
+
+[node name="ButtonContainer" parent="." index="2"]
+margin_top = 142.0
+margin_bottom = 230.0
+
+[node name="NewGameButton" parent="ButtonContainer" index="0"]
+visible = false
+
+[node name="AboutButton" parent="ButtonContainer" index="1"]
+visible = false
+
+[node name="BackButton" parent="ButtonContainer" index="2"]
+visible = false
+
+[node name="MainMenuButton" parent="ButtonContainer" index="3"]
+visible = false
+margin_top = 0.0
+margin_bottom = 42.0
+
+[node name="RestartButton" parent="ButtonContainer" index="4"]
+margin_top = 0.0
+margin_bottom = 42.0
+text = "MAIN MENU"
+
+[node name="QuitButton" parent="ButtonContainer" index="5"]
+margin_top = 46.0
+margin_bottom = 88.0

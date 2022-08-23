@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://entities/definitions/charredwood.tres" type="Resource" id=1]
+[ext_resource path="res://entities/templates/static_entity.tscn" type="PackedScene" id=2]
+
+[node name="CharredWood" instance=ExtResource( 2 )]
+
+[node name="InteractableObject" parent="." index="0"]
+entity_def = ExtResource( 1 )

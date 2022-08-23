@@ -1,0 +1,15 @@
+[remap]
+
+importer="ink"
+type="Resource"
+path="res://.import/storyline.ink-81544566cff4f26fe9481572ff537215.res"
+
+[deps]
+
+source_file="res://interface/dialogue/storyline.ink"
+dest_files=[ "res://.import/storyline.ink-81544566cff4f26fe9481572ff537215.res" ]
+
+[params]
+
+is_master_file=true
+compress=true

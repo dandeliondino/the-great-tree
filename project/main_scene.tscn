@@ -1,0 +1,646 @@
+[gd_scene load_steps=53 format=2]
+
+[ext_resource path="res://scripts/game_manager.gd" type="Script" id=1]
+[ext_resource path="res://interface/level_transition.gd" type="Script" id=2]
+[ext_resource path="res://interface/menus/main_menu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://interface/menus/game_over_menu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://interface/dialogue/dialogue_container.tscn" type="PackedScene" id=5]
+[ext_resource path="res://interface/camera2d.gd" type="Script" id=6]
+[ext_resource path="res://interface/render_components.gd" type="Script" id=7]
+[ext_resource path="res://interface/inventory/inventory_panel.tscn" type="PackedScene" id=8]
+[ext_resource path="res://interface/menus/about_menu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://interface/menus/pause_menu.tscn" type="PackedScene" id=10]
+[ext_resource path="res://interface/viewport_texture.gd" type="Script" id=11]
+[ext_resource path="res://interface/inventory/inventory_manager.gd" type="Script" id=12]
+[ext_resource path="res://interface/dialogue/storyline.ink" type="Resource" id=13]
+[ext_resource path="res://addons/paulloz.ink/InkPlayer.cs" type="Script" id=14]
+[ext_resource path="res://scripts/ink_manager.gd" type="Script" id=15]
+[ext_resource path="res://interface/game_theme.tres" type="Theme" id=16]
+[ext_resource path="res://interface/hud/interact_hint.gd" type="Script" id=17]
+[ext_resource path="res://interface/layers/menu_layer.gd" type="Script" id=18]
+[ext_resource path="res://interface/layers/hud_layer.gd" type="Script" id=19]
+[ext_resource path="res://interface/layers/dialogue_layer.gd" type="Script" id=20]
+[ext_resource path="res://interface/hud/notifications_container.gd" type="Script" id=21]
+[ext_resource path="res://interface/hud/notification_label.tscn" type="PackedScene" id=23]
+[ext_resource path="res://interface/hud/currency_status.gd" type="Script" id=24]
+[ext_resource path="res://interface/layers/panel_layer.gd" type="Script" id=25]
+[ext_resource path="res://interface/music/JRPG_characterRevived.ogg" type="AudioStream" id=26]
+[ext_resource path="res://interface/music/JRPG_goodMorning.ogg" type="AudioStream" id=27]
+[ext_resource path="res://scripts/debug_manager.gd" type="Script" id=28]
+[ext_resource path="res://interface/audio/click5.ogg" type="AudioStream" id=29]
+[ext_resource path="res://interface/audio/click1.ogg" type="AudioStream" id=30]
+[ext_resource path="res://interface/signal_audio_player.gd" type="Script" id=31]
+[ext_resource path="res://interface/audio/cloth2.ogg" type="AudioStream" id=32]
+[ext_resource path="res://interface/audio/handleCoins.ogg" type="AudioStream" id=33]
+[ext_resource path="res://interface/audio/maximize_008.ogg" type="AudioStream" id=34]
+[ext_resource path="res://interface/audio/minimize_008.ogg" type="AudioStream" id=35]
+[ext_resource path="res://interface/journal/journal_panel.tscn" type="PackedScene" id=36]
+[ext_resource path="res://interface/audio/bookFlip3.ogg" type="AudioStream" id=37]
+[ext_resource path="res://interface/audio/forest_ambience.mp3" type="AudioStream" id=38]
+[ext_resource path="res://interface/textures/top_bar_stylebox_v2.tres" type="StyleBox" id=39]
+[ext_resource path="res://interface/textures/dialogue_stylebox.tres" type="StyleBox" id=40]
+[ext_resource path="res://interface/hud/input_hints/input_hints_container.gd" type="Script" id=41]
+[ext_resource path="res://interface/hud/input_hints/input_hints_world.tscn" type="PackedScene" id=42]
+[ext_resource path="res://interface/music/JRPG_princess.ogg" type="AudioStream" id=43]
+[ext_resource path="res://interface/background_music_player.gd" type="Script" id=44]
+[ext_resource path="res://interface/audio/sinkWater4.ogg" type="AudioStream" id=45]
+[ext_resource path="res://interface/audio/fire-1.ogg" type="AudioStream" id=46]
+[ext_resource path="res://interface/audio/explosion4.ogg" type="AudioStream" id=47]
+[ext_resource path="res://interface/audio/doorOpen_2.ogg" type="AudioStream" id=48]
+
+[sub_resource type="ViewportTexture" id=1]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "fade_to_black"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.000364048, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "fade_to_game"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.000364048, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.249555 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="MainScene" type="Node2D"]
+
+[node name="GameManager" type="Node2D" parent="."]
+pause_mode = 2
+script = ExtResource( 1 )
+world = NodePath("../Viewport/World")
+levelTransitionAnimPlayer = NodePath("../LevelTransition/AnimationPlayer")
+
+[node name="AudioManager" type="Node2D" parent="GameManager"]
+
+[node name="UIAudio" type="Node2D" parent="GameManager/AudioManager"]
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="GameManager/AudioManager/UIAudio"]
+stream = ExtResource( 30 )
+script = ExtResource( 31 )
+signal_name = "UI_button_pressed"
+
+[node name="ButtonFocus" type="AudioStreamPlayer" parent="GameManager/AudioManager/UIAudio"]
+stream = ExtResource( 29 )
+volume_db = 8.0
+script = ExtResource( 31 )
+signal_name = "UI_button_focused"
+
+[node name="OpenPanel" type="AudioStreamPlayer" parent="GameManager/AudioManager/UIAudio"]
+stream = ExtResource( 34 )
+script = ExtResource( 31 )
+signal_name = "UI_panel_opened"
+
+[node name="ClosePanel" type="AudioStreamPlayer" parent="GameManager/AudioManager/UIAudio"]
+stream = ExtResource( 35 )
+script = ExtResource( 31 )
+signal_name = "UI_panel_closed"
+
+[node name="JournalUpdated" type="AudioStreamPlayer" parent="GameManager/AudioManager/UIAudio"]
+stream = ExtResource( 37 )
+script = ExtResource( 31 )
+signal_name = "journal_updated"
+
+[node name="InventoryItem" type="AudioStreamPlayer" parent="GameManager/AudioManager/UIAudio"]
+stream = ExtResource( 32 )
+script = ExtResource( 31 )
+signal_name = "sfx_inventory_item"
+
+[node name="InventoryCoin" type="AudioStreamPlayer" parent="GameManager/AudioManager/UIAudio"]
+stream = ExtResource( 33 )
+script = ExtResource( 31 )
+signal_name = "sfx_coins"
+
+[node name="StoryAudio" type="Node2D" parent="GameManager/AudioManager"]
+
+[node name="FireOut" type="AudioStreamPlayer" parent="GameManager/AudioManager/StoryAudio"]
+stream = ExtResource( 47 )
+script = ExtResource( 31 )
+signal_name = "fire_extinguished"
+
+[node name="DoorOpened" type="AudioStreamPlayer" parent="GameManager/AudioManager/StoryAudio"]
+stream = ExtResource( 48 )
+volume_db = -10.0
+script = ExtResource( 31 )
+signal_name = "door_opened"
+
+[node name="FireCrackling" type="AudioStreamPlayer" parent="GameManager/AudioManager/StoryAudio"]
+stream = ExtResource( 46 )
+volume_db = 5.0
+script = ExtResource( 31 )
+signal_name = "fire_crackling_started"
+stop_signal_name = "fire_crackling_stopped"
+
+[node name="WaterBucketFilled" type="AudioStreamPlayer" parent="GameManager/AudioManager/StoryAudio"]
+stream = ExtResource( 45 )
+script = ExtResource( 31 )
+signal_name = "water_bucket_filled"
+
+[node name="RuneStinger" type="AudioStreamPlayer" parent="GameManager/AudioManager/StoryAudio"]
+stream = ExtResource( 26 )
+volume_db = -5.0
+script = ExtResource( 31 )
+signal_name = "rune_placed"
+
+[node name="WinStinger" type="AudioStreamPlayer" parent="GameManager/AudioManager/StoryAudio"]
+stream = ExtResource( 27 )
+volume_db = -5.0
+script = ExtResource( 31 )
+signal_name = "victory_music_requested"
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="GameManager/AudioManager"]
+stream = ExtResource( 38 )
+volume_db = 5.0
+script = ExtResource( 44 )
+
+[node name="Tween" type="Tween" parent="GameManager/AudioManager/MusicPlayer"]
+
+[node name="InkManager" type="Node2D" parent="GameManager"]
+script = ExtResource( 15 )
+
+[node name="InkPlayer" type="Node" parent="GameManager/InkManager"]
+script = ExtResource( 14 )
+autoLoadStory = true
+story = ExtResource( 13 )
+
+[node name="DebugManager" type="Node2D" parent="GameManager"]
+script = ExtResource( 28 )
+
+[node name="InventoryManager" type="Node2D" parent="GameManager"]
+script = ExtResource( 12 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 320, 180 )
+handle_input_locally = false
+disable_3d = true
+usage = 0
+render_target_v_flip = true
+render_target_update_mode = 3
+physics_object_picking = true
+
+[node name="World" type="Node2D" parent="Viewport"]
+
+[node name="RenderComponents" type="Node2D" parent="."]
+position = Vector2( 320, 180 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ViewportTexture" type="TextureRect" parent="RenderComponents"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -320.0
+margin_top = -180.0
+margin_right = 320.0
+margin_bottom = 180.0
+texture = SubResource( 1 )
+expand = true
+script = ExtResource( 11 )
+
+[node name="Camera2D" type="Camera2D" parent="RenderComponents"]
+current = true
+script = ExtResource( 6 )
+
+[node name="HUD" type="CanvasLayer" parent="."]
+pause_mode = 1
+script = ExtResource( 19 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 0
+
+[node name="TopBar" type="Panel" parent="HUD/VBoxContainer"]
+margin_right = 640.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 0, 56 )
+mouse_filter = 2
+size_flags_horizontal = 3
+custom_styles/panel = ExtResource( 39 )
+
+[node name="Background" type="ColorRect" parent="HUD/VBoxContainer/TopBar"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.301961, 0.270588, 0.223529, 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/VBoxContainer/TopBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 2
+custom_constants/margin_right = 8
+custom_constants/margin_top = 4
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 16
+
+[node name="TopContainer" type="HBoxContainer" parent="HUD/VBoxContainer/TopBar/MarginContainer"]
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 632.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+
+[node name="NotificationsContainer" type="VBoxContainer" parent="HUD/VBoxContainer/TopBar/MarginContainer/TopContainer"]
+pause_mode = 2
+margin_right = 205.0
+margin_bottom = 40.0
+rect_clip_content = true
+size_flags_horizontal = 3
+custom_constants/separation = 0
+script = ExtResource( 21 )
+
+[node name="NotificationLabel" parent="HUD/VBoxContainer/TopBar/MarginContainer/TopContainer/NotificationsContainer" instance=ExtResource( 23 )]
+margin_right = 205.0
+margin_bottom = 20.0
+text = "Notification..."
+
+[node name="InteractHint" type="VBoxContainer" parent="HUD/VBoxContainer/TopBar/MarginContainer/TopContainer"]
+margin_left = 209.0
+margin_right = 414.0
+margin_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource( 16 )
+custom_constants/separation = -4
+alignment = 1
+script = ExtResource( 17 )
+interactableNameLabel = NodePath("InteractableNameLabel")
+keypressLabel = NodePath("HBoxContainer/KeypressLabel")
+verbLabel = NodePath("HBoxContainer/VerbLabel")
+
+[node name="InteractableNameLabel" type="Label" parent="HUD/VBoxContainer/TopBar/MarginContainer/TopContainer/InteractHint"]
+margin_right = 205.0
+margin_bottom = 20.0
+custom_colors/font_color = Color( 0.701961, 0.647059, 0.333333, 1 )
+text = "signpost"
+align = 1
+uppercase = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/VBoxContainer/TopBar/MarginContainer/TopContainer/InteractHint"]
+margin_top = 16.0
+margin_right = 205.0
+margin_bottom = 36.0
+alignment = 1
+
+[node name="KeypressLabel" type="Label" parent="HUD/VBoxContainer/TopBar/MarginContainer/TopContainer/InteractHint/HBoxContainer"]
+margin_left = 69.0
+margin_right = 91.0
+margin_bottom = 20.0
+custom_colors/font_color = Color( 0.701961, 0.647059, 0.333333, 1 )
+text = "[e]"
+
+[node name="VerbLabel" type="Label" parent="HUD/VBoxContainer/TopBar/MarginContainer/TopContainer/InteractHint/HBoxContainer"]
+margin_left = 95.0
+margin_right = 135.0
+margin_bottom = 20.0
+text = "read"
+
+[node name="BottomMargin" type="Control" parent="HUD/VBoxContainer/TopBar/MarginContainer/TopContainer/InteractHint"]
+margin_top = 32.0
+margin_right = 205.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 8 )
+
+[node name="CurrencyStatus" type="HBoxContainer" parent="HUD/VBoxContainer/TopBar/MarginContainer/TopContainer"]
+margin_left = 418.0
+margin_right = 624.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+alignment = 2
+script = ExtResource( 24 )
+
+[node name="TextureRect" type="TextureRect" parent="HUD/VBoxContainer/TopBar/MarginContainer/TopContainer/CurrencyStatus"]
+visible = false
+margin_left = 174.0
+margin_right = 206.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="HUD/VBoxContainer/TopBar/MarginContainer/TopContainer/CurrencyStatus"]
+visible = false
+margin_left = 146.0
+margin_top = 6.0
+margin_right = 206.0
+margin_bottom = 26.0
+text = "200000"
+align = 2
+
+[node name="MiddleHUD" type="MarginContainer" parent="HUD/VBoxContainer"]
+margin_top = 56.0
+margin_right = 640.0
+margin_bottom = 328.0
+mouse_filter = 1
+size_flags_vertical = 3
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+
+[node name="BottomBar" type="Panel" parent="HUD/VBoxContainer"]
+margin_top = 328.0
+margin_right = 640.0
+margin_bottom = 360.0
+rect_min_size = Vector2( 0, 32 )
+mouse_filter = 1
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 5 )
+
+[node name="Background" type="ColorRect" parent="HUD/VBoxContainer/BottomBar"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+color = Color( 0.301961, 0.270588, 0.223529, 1 )
+
+[node name="InputHintsContainer" type="MarginContainer" parent="HUD/VBoxContainer/BottomBar"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -320.0
+margin_top = -16.0
+margin_right = 320.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+script = ExtResource( 41 )
+
+[node name="InputHintsWorld" parent="HUD/VBoxContainer/BottomBar/InputHintsContainer" instance=ExtResource( 42 )]
+
+[node name="Dialogue" type="CanvasLayer" parent="."]
+pause_mode = 2
+visible = false
+script = ExtResource( 20 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Dialogue"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_right = 8
+custom_constants/margin_top = 64
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 48
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Dialogue/MarginContainer"]
+margin_left = 8.0
+margin_top = 64.0
+margin_right = 632.0
+margin_bottom = 312.0
+
+[node name="Control" type="Control" parent="Dialogue/MarginContainer/HBoxContainer"]
+margin_right = 372.0
+margin_bottom = 248.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="Control3" type="Control" parent="Dialogue/MarginContainer/HBoxContainer"]
+margin_left = 376.0
+margin_right = 624.0
+margin_bottom = 248.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="DialogueContainer" parent="Dialogue/MarginContainer/HBoxContainer/Control3" instance=ExtResource( 5 )]
+
+[node name="Panels" type="CanvasLayer" parent="."]
+pause_mode = 2
+visible = false
+script = ExtResource( 25 )
+inventoryPanel = NodePath("MarginContainer/InventoryPanel")
+journalPanel = NodePath("MarginContainer/JournalPanel")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panels"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 48
+custom_constants/margin_top = 64
+custom_constants/margin_left = 48
+custom_constants/margin_bottom = 48
+
+[node name="JournalPanel" parent="Panels/MarginContainer" instance=ExtResource( 36 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 48.0
+margin_top = 64.0
+margin_right = 592.0
+margin_bottom = 312.0
+
+[node name="InventoryPanel" parent="Panels/MarginContainer" instance=ExtResource( 8 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 48.0
+margin_top = 64.0
+margin_right = 592.0
+margin_bottom = 312.0
+
+[node name="Menus" type="CanvasLayer" parent="."]
+pause_mode = 2
+script = ExtResource( 18 )
+mainMenu = NodePath("MarginContainer/PanelContainer/MarginContainer/MainMenu")
+gameOverMenu = NodePath("MarginContainer/PanelContainer/MarginContainer/GameOverMenu")
+aboutMenu = NodePath("MarginContainer/PanelContainer/MarginContainer/AboutMenu")
+pauseMenu = NodePath("MarginContainer/PanelContainer/MarginContainer/PauseMenu")
+menuMusicPlayer = NodePath("MenuMusicPlayer")
+
+[node name="MenuMusicPlayer" type="AudioStreamPlayer" parent="Menus"]
+stream = ExtResource( 43 )
+volume_db = -15.0
+
+[node name="Tween" type="Tween" parent="Menus"]
+
+[node name="MenuBackground" type="ColorRect" parent="Menus"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.301961, 0.270588, 0.223529, 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Menus"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 128
+custom_constants/margin_top = 40
+custom_constants/margin_left = 128
+custom_constants/margin_bottom = 40
+
+[node name="PanelContainer" type="PanelContainer" parent="Menus/MarginContainer"]
+margin_left = 128.0
+margin_top = 40.0
+margin_right = 512.0
+margin_bottom = 320.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = ExtResource( 40 )
+
+[node name="ColorRect" type="ColorRect" parent="Menus/MarginContainer/PanelContainer"]
+show_behind_parent = true
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 380.0
+margin_bottom = 276.0
+color = Color( 0.952941, 0.839216, 0.698039, 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Menus/MarginContainer/PanelContainer"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 380.0
+margin_bottom = 276.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
+
+[node name="MainMenu" parent="Menus/MarginContainer/PanelContainer/MarginContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 360.0
+margin_bottom = 256.0
+
+[node name="GameOverMenu" parent="Menus/MarginContainer/PanelContainer/MarginContainer" instance=ExtResource( 4 )]
+visible = false
+margin_right = 360.0
+margin_bottom = 256.0
+
+[node name="AboutMenu" parent="Menus/MarginContainer/PanelContainer/MarginContainer" instance=ExtResource( 9 )]
+visible = false
+margin_right = 360.0
+margin_bottom = 256.0
+
+[node name="PauseMenu" parent="Menus/MarginContainer/PanelContainer/MarginContainer" instance=ExtResource( 10 )]
+visible = false
+margin_right = 360.0
+margin_bottom = 256.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="Menus"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+
+[node name="FooterContainer" type="HBoxContainer" parent="Menus/MarginContainer2"]
+margin_left = 8.0
+margin_top = 332.0
+margin_right = 632.0
+margin_bottom = 352.0
+size_flags_vertical = 8
+alignment = 2
+
+[node name="NameLabel" type="Label" parent="Menus/MarginContainer2/FooterContainer"]
+margin_right = 452.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "created by: dandeliondino"
+
+[node name="LinkLabel" type="Label" parent="Menus/MarginContainer2/FooterContainer"]
+margin_left = 456.0
+margin_right = 624.0
+margin_bottom = 20.0
+text = "dandeliondino.itch.io"
+
+[node name="LevelTransition" type="CanvasLayer" parent="."]
+pause_mode = 2
+script = ExtResource( 2 )
+animPlayer = NodePath("AnimationPlayer")
+
+[node name="ColorRect" type="ColorRect" parent="LevelTransition"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.152941, 0.133333, 0.137255, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LevelTransition"]
+anims/RESET = SubResource( 2 )
+anims/fade_to_black = SubResource( 3 )
+anims/fade_to_game = SubResource( 4 )

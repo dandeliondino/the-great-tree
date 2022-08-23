@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://interface/journal/quest_container.gd" type="Script" id=1]
+[ext_resource path="res://interface/journal/step_container.tscn" type="PackedScene" id=2]
+
+[node name="QuestContainer" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+normal_color = Color( 1, 1, 1, 1 )
+focused_color = Color( 0.980392, 0.784314, 0, 1 )
+titleLabel = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/TitleLabel")
+statusLabel = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/StatusLabel")
+descriptionLabel = NodePath("HBoxContainer/VBoxContainer/DescriptionLabel")
+stepListContainer = NodePath("HBoxContainer/VBoxContainer/MarginContainer/StepListContainer")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 640.0
+margin_bottom = 360.0
+grow_vertical = 0
+custom_constants/separation = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 640.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+margin_right = 640.0
+margin_bottom = 20.0
+
+[node name="TitleLabel" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_right = 640.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.466667, 0.454902, 0.231373, 1 )
+text = "Quest Name"
+
+[node name="StatusLabel" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+visible = false
+margin_left = 554.0
+margin_right = 640.0
+margin_bottom = 20.0
+text = "Completed"
+
+[node name="DescriptionLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 640.0
+margin_bottom = 44.0
+text = "Quest description here."
+autowrap = true
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 640.0
+margin_bottom = 92.0
+custom_constants/margin_right = 32
+custom_constants/margin_left = 32
+
+[node name="StepListContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/MarginContainer"]
+margin_left = 32.0
+margin_right = 608.0
+margin_bottom = 44.0
+
+[node name="StepContainer" parent="HBoxContainer/VBoxContainer/MarginContainer/StepListContainer" instance=ExtResource( 2 )]
+margin_bottom = 44.0
+
+[connection signal="focus_entered" from="." to="." method="_on_QuestContainer_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_QuestContainer_focus_exited"]

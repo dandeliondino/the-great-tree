@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://interface/journal/tracker_container.gd" type="Script" id=1]
+
+[node name="TrackerContainer" type="MarginContainer"]
+margin_right = 528.0
+margin_bottom = 20.0
+script = ExtResource( 1 )
+trackerLabel = NodePath("TrackerLabel")
+
+[node name="TrackerLabel" type="Label" parent="."]
+margin_right = 528.0
+margin_bottom = 20.0
+text = "Tracker 1: 5/10"

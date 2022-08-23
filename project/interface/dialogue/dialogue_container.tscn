@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://interface/button_container.gd" type="Script" id=1]
+[ext_resource path="res://interface/dialogue/dialogue_container.gd" type="Script" id=2]
+[ext_resource path="res://interface/dialogue/choice_button.tscn" type="PackedScene" id=3]
+[ext_resource path="res://interface/fonts/header_small.tres" type="DynamicFont" id=4]
+[ext_resource path="res://interface/textures/dialogue_stylebox.tres" type="StyleBox" id=5]
+[ext_resource path="res://interface/dialogue/dialogue_label.gd" type="Script" id=6]
+[ext_resource path="res://interface/audio/tick_004.ogg" type="AudioStream" id=7]
+
+[node name="DialogueContainer" type="PanelContainer"]
+pause_mode = 2
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -114.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = ExtResource( 5 )
+script = ExtResource( 2 )
+dialogueLabel = NodePath("MarginContainer/VBoxContainer/DialogueLabel")
+speakerLabel = NodePath("MarginContainer/VBoxContainer/SpeakerLabel")
+choiceContainer = NodePath("MarginContainer/VBoxContainer/MarginContainer/ChoiceContainer")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 636.0
+margin_bottom = 160.0
+color = Color( 0.952941, 0.839216, 0.698039, 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 636.0
+margin_bottom = 160.0
+custom_constants/margin_right = 12
+custom_constants/margin_top = 12
+custom_constants/margin_left = 12
+custom_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 620.0
+margin_bottom = 144.0
+rect_clip_content = true
+size_flags_horizontal = 3
+custom_constants/separation = 16
+
+[node name="SpeakerLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_right = 608.0
+margin_bottom = 24.0
+custom_colors/font_color = Color( 0.301961, 0.270588, 0.223529, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Wizard"
+align = 1
+clip_text = true
+
+[node name="DialogueLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_top = 40.0
+margin_right = 608.0
+margin_bottom = 60.0
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0.301961, 0.270588, 0.223529, 1 )
+text = "Do you want to win the game?"
+autowrap = true
+script = ExtResource( 6 )
+typing_sounds = [ ExtResource( 7 ) ]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MarginContainer/VBoxContainer/DialogueLabel"]
+volume_db = -10.0
+
+[node name="Timer" type="Timer" parent="MarginContainer/VBoxContainer/DialogueLabel"]
+wait_time = 0.05
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 76.0
+margin_right = 608.0
+margin_bottom = 132.0
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+
+[node name="ChoiceContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+margin_left = 8.0
+margin_right = 608.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 8
+script = ExtResource( 1 )
+
+[node name="ChoiceButton" parent="MarginContainer/VBoxContainer/MarginContainer/ChoiceContainer" instance=ExtResource( 3 )]
+margin_right = 600.0
+custom_colors/font_color_focus = Color( 0.980392, 0.784314, 0, 1 )
+
+[node name="ChoiceButton2" parent="MarginContainer/VBoxContainer/MarginContainer/ChoiceContainer" instance=ExtResource( 3 )]
+margin_top = 28.0
+margin_right = 600.0
+margin_bottom = 48.0
+
+[connection signal="timeout" from="MarginContainer/VBoxContainer/DialogueLabel/Timer" to="MarginContainer/VBoxContainer/DialogueLabel" method="_on_Timer_timeout"]

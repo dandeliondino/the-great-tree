@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/JRPG_characterRevived.ogg-91f9fdb54b4095273d7b992f84f89950.oggstr"
+
+[deps]
+
+source_file="res://interface/music/JRPG_characterRevived.ogg"
+dest_files=[ "res://.import/JRPG_characterRevived.ogg-91f9fdb54b4095273d7b992f84f89950.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

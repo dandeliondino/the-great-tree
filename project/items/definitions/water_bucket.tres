@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://items/item.gd" type="Script" id=1]
+[ext_resource path="res://entities/textures/bucket.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+id = "water_bucket"
+display_name = "Water Bucket"
+display_name_plural = ""
+description = "A wooden bucket filled with water."
+icon_texture = ExtResource( 2 )
+persistent_in_inventory = false
+always_show_count = false

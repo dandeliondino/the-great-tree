@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://entities/entity.gd" type="Script" id=1]
+[ext_resource path="res://entities/textures/animal2.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+display_name = "Vole"
+ink_path = "animal2"
+interaction_verb = "talk"
+sprite_texture = ExtResource( 2 )
+destroy_on_disable = false

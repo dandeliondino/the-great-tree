@@ -1,0 +1,159 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://interface/menus/menu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://interface/scroll_container.gd" type="Script" id=2]
+[ext_resource path="res://interface/game_theme_aboutmenu.tres" type="Theme" id=3]
+
+[node name="AboutMenu" instance=ExtResource( 1 )]
+
+[node name="HeaderContainer" parent="." index="0"]
+size_flags_vertical = 1
+
+[node name="Label" parent="HeaderContainer" index="0"]
+text = "ABOUT"
+
+[node name="ContentContainer" parent="." index="1"]
+margin_bottom = 172.0
+size_flags_vertical = 3
+custom_constants/margin_top = 8
+
+[node name="ColorRect" type="ColorRect" parent="ContentContainer" index="0"]
+margin_top = 8.0
+margin_right = 250.0
+margin_bottom = 132.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.952941, 0.839216, 0.698039, 1 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ContentContainer" index="1"]
+margin_top = 8.0
+margin_right = 250.0
+margin_bottom = 132.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+scroll_horizontal_enabled = false
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/ScrollContainer" index="0"]
+margin_right = 242.0
+margin_bottom = 397.0
+size_flags_horizontal = 3
+theme = ExtResource( 3 )
+custom_constants/separation = 8
+
+[node name="Label2" type="Label" parent="ContentContainer/ScrollContainer/VBoxContainer" index="0"]
+margin_right = 242.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.301961, 0.270588, 0.223529, 1 )
+text = "This game was made for Kenney Jam 2022 (theme: Growth)"
+autowrap = true
+
+[node name="Label5" type="Label" parent="ContentContainer/ScrollContainer/VBoxContainer" index="1"]
+margin_top = 50.0
+margin_right = 242.0
+margin_bottom = 77.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.301961, 0.270588, 0.223529, 1 )
+text = "Created with Godot and Ink Engines"
+autowrap = true
+
+[node name="Label" type="Label" parent="ContentContainer/ScrollContainer/VBoxContainer" index="2"]
+margin_top = 85.0
+margin_right = 242.0
+margin_bottom = 127.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.301961, 0.270588, 0.223529, 1 )
+text = "Art, fonts & most sound assets from Kenney (www.kenney.nl/)"
+autowrap = true
+
+[node name="Label3" type="Label" parent="ContentContainer/ScrollContainer/VBoxContainer" index="3"]
+margin_top = 135.0
+margin_right = 242.0
+margin_bottom = 177.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.301961, 0.270588, 0.223529, 1 )
+text = "Pixel art outline shader from weekend, GDQuest and contributors"
+autowrap = true
+
+[node name="Label4" type="Label" parent="ContentContainer/ScrollContainer/VBoxContainer" index="4"]
+margin_top = 185.0
+margin_right = 242.0
+margin_bottom = 212.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.301961, 0.270588, 0.223529, 1 )
+text = "Integer resolution handler from Yukitty"
+autowrap = true
+
+[node name="Label6" type="Label" parent="ContentContainer/ScrollContainer/VBoxContainer" index="5"]
+margin_top = 220.0
+margin_right = 242.0
+margin_bottom = 262.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.301961, 0.270588, 0.223529, 1 )
+text = "Music and stingers from JRPG Collection by Yubatake (OpenGameArt.Org)"
+autowrap = true
+
+[node name="Label7" type="Label" parent="ContentContainer/ScrollContainer/VBoxContainer" index="6"]
+margin_top = 270.0
+margin_right = 242.0
+margin_bottom = 312.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.301961, 0.270588, 0.223529, 1 )
+text = "\"Fire Crackling\" from AntumDeluge (OpenGameArt.Org)"
+autowrap = true
+
+[node name="Label8" type="Label" parent="ContentContainer/ScrollContainer/VBoxContainer" index="7"]
+margin_top = 320.0
+margin_right = 242.0
+margin_bottom = 347.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.301961, 0.270588, 0.223529, 1 )
+text = "\"Stream Sounds\" from kurt (OpenGameArt.Org)"
+autowrap = true
+
+[node name="Label9" type="Label" parent="ContentContainer/ScrollContainer/VBoxContainer" index="8"]
+margin_top = 355.0
+margin_right = 242.0
+margin_bottom = 397.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.301961, 0.270588, 0.223529, 1 )
+text = "\"Forest Ambience\" from TinyWorlds (OpenGameArt.Org)"
+autowrap = true
+
+[node name="Control" type="Control" parent="." index="2"]
+margin_top = 172.0
+margin_right = 250.0
+margin_bottom = 188.0
+rect_min_size = Vector2( 0, 16 )
+
+[node name="ButtonContainer" parent="." index="3"]
+margin_top = 188.0
+margin_bottom = 230.0
+
+[node name="NewGameButton" parent="ButtonContainer" index="0"]
+visible = false
+
+[node name="AboutButton" parent="ButtonContainer" index="1"]
+visible = false
+margin_top = 0.0
+margin_bottom = 38.0
+
+[node name="BackButton" parent="ButtonContainer" index="2"]
+visible = false
+margin_top = 0.0
+margin_bottom = 38.0
+
+[node name="MainMenuButton" parent="ButtonContainer" index="3"]
+margin_top = 0.0
+margin_bottom = 42.0
+
+[node name="RestartButton" parent="ButtonContainer" index="4"]
+visible = false
+margin_top = 46.0
+margin_bottom = 88.0
+
+[node name="QuitButton" parent="ButtonContainer" index="5"]
+visible = false
+margin_top = 42.0
+margin_bottom = 80.0

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://items/item.gd" type="Script" id=1]
+[ext_resource path="res://items/textures/runesketch.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+id = "rune_sketch"
+display_name = "Regrowth Rune"
+display_name_plural = ""
+description = "A detailed sketch of the rune, meant for copying."
+icon_texture = ExtResource( 2 )
+persistent_in_inventory = false
+always_show_count = false

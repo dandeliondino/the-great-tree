@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://entities/definitions/stream.tres" type="Resource" id=1]
+[ext_resource path="res://entities/templates/kinetic_entity.tscn" type="PackedScene" id=2]
+
+[node name="Stream" instance=ExtResource( 2 )]
+
+[node name="InteractableObject" parent="." index="0"]
+entity_def = ExtResource( 1 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false

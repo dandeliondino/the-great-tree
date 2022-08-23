@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/JRPG_princess.ogg-11e180048efea054d12db2a887efcb06.oggstr"
+
+[deps]
+
+source_file="res://interface/music/JRPG_princess.ogg"
+dest_files=[ "res://.import/JRPG_princess.ogg-11e180048efea054d12db2a887efcb06.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,108 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://interface/fonts/title_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://interface/menus/ui_menu_button.gd" type="Script" id=2]
+[ext_resource path="res://interface/button_container.gd" type="Script" id=3]
+
+[node name="Menu" type="VBoxContainer"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 266.0
+margin_bottom = 246.0
+size_flags_vertical = 3
+custom_constants/separation = 0
+alignment = 1
+
+[node name="HeaderContainer" type="MarginContainer" parent="."]
+margin_right = 250.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+
+[node name="Label" type="Label" parent="HeaderContainer"]
+margin_right = 250.0
+margin_bottom = 40.0
+size_flags_vertical = 1
+size_flags_stretch_ratio = 3.0
+custom_colors/font_color = Color( 0.466667, 0.454902, 0.231373, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Menu"
+align = 1
+valign = 1
+
+[node name="ContentContainer" type="MarginContainer" parent="."]
+margin_top = 40.0
+margin_right = 250.0
+margin_bottom = 40.0
+
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+margin_left = 32.0
+margin_top = 40.0
+margin_right = 218.0
+margin_bottom = 312.0
+rect_min_size = Vector2( 186, 0 )
+size_flags_horizontal = 4
+custom_constants/separation = 4
+alignment = 2
+script = ExtResource( 3 )
+
+[node name="NewGameButton" type="Button" parent="ButtonContainer"]
+margin_right = 186.0
+margin_bottom = 42.0
+size_flags_vertical = 3
+text = "NEW GAME"
+script = ExtResource( 2 )
+signal_name = "new_game_requested"
+
+[node name="AboutButton" type="Button" parent="ButtonContainer"]
+margin_top = 46.0
+margin_right = 186.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "ABOUT"
+script = ExtResource( 2 )
+signal_name = "about_menu_requested"
+
+[node name="BackButton" type="Button" parent="ButtonContainer"]
+margin_top = 92.0
+margin_right = 186.0
+margin_bottom = 134.0
+size_flags_vertical = 3
+text = "BACK TO GAME"
+script = ExtResource( 2 )
+signal_name = "game_state_exit_requested"
+
+[node name="MainMenuButton" type="Button" parent="ButtonContainer"]
+margin_top = 138.0
+margin_right = 186.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "MAIN MENU"
+script = ExtResource( 2 )
+signal_name = "main_menu_requested"
+
+[node name="RestartButton" type="Button" parent="ButtonContainer"]
+margin_top = 184.0
+margin_right = 186.0
+margin_bottom = 226.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "RESTART"
+script = ExtResource( 2 )
+signal_name = "restart_game_requested"
+
+[node name="QuitButton" type="Button" parent="ButtonContainer" groups=["hide_on_web"]]
+margin_top = 230.0
+margin_right = 186.0
+margin_bottom = 272.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "QUIT"
+script = ExtResource( 2 )
+signal_name = "quit_requested"

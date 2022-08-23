@@ -1,0 +1,61 @@
+[gd_resource type="Theme" load_steps=16 format=2]
+
+[ext_resource path="res://interface/fonts/text_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://interface/textures/button_normal_stylebox.tres" type="StyleBox" id=2]
+[ext_resource path="res://interface/textures/panel_stylebox.tres" type="StyleBox" id=3]
+[ext_resource path="res://interface/textures/button_pressed_stylebox.tres" type="StyleBox" id=4]
+[ext_resource path="res://interface/textures/1bit_mono_matriax.png" type="Texture" id=5]
+[ext_resource path="res://interface/fonts/button_font.tres" type="DynamicFont" id=6]
+[ext_resource path="res://interface/textures/button_focused_stylebox.tres" type="StyleBox" id=7]
+[ext_resource path="res://interface/textures/dialogue_stylebox.tres" type="StyleBox" id=8]
+[ext_resource path="res://interface/fonts/title_font.tres" type="DynamicFont" id=9]
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 5 )
+region_rect = Rect2( 768, 144, 16, 16 )
+margin_left = 9.0
+margin_right = 9.0
+margin_top = 9.0
+margin_bottom = 9.0
+modulate_color = Color( 0.45098, 0.392157, 0.392157, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.466667, 0.454902, 0.231373, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.466667, 0.454902, 0.231373, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.466667, 0.454902, 0.231373, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color( 0.952941, 0.839216, 0.698039, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[resource]
+default_font = ExtResource( 1 )
+Button/colors/font_color = Color( 0.952941, 0.839216, 0.698039, 1 )
+Button/colors/font_color_disabled = Color( 0.6, 0.388235, 0.211765, 1 )
+Button/colors/font_color_focus = Color( 0.952941, 0.839216, 0.698039, 1 )
+Button/colors/font_color_hover = Color( 0.952941, 0.839216, 0.698039, 1 )
+Button/colors/font_color_pressed = Color( 0.952941, 0.839216, 0.698039, 1 )
+Button/fonts/font = ExtResource( 6 )
+Button/styles/disabled = SubResource( 9 )
+Button/styles/focus = ExtResource( 7 )
+Button/styles/hover = ExtResource( 2 )
+Button/styles/normal = ExtResource( 2 )
+Button/styles/pressed = ExtResource( 4 )
+HeaderLabel/colors/font_color = Color( 0.835294, 0.545098, 0.223529, 1 )
+HeaderLabel/fonts/font = ExtResource( 9 )
+Label/colors/font_color = Color( 0.952941, 0.839216, 0.698039, 1 )
+PanelContainer/styles/panel = ExtResource( 8 )
+PopupPanel/styles/panel = ExtResource( 3 )
+RichTextLabel/colors/default_color = Color( 0.941176, 0.941176, 0.862745, 1 )
+VScrollBar/styles/grabber = SubResource( 3 )
+VScrollBar/styles/grabber_highlight = SubResource( 4 )
+VScrollBar/styles/grabber_pressed = SubResource( 5 )
+VScrollBar/styles/scroll = SubResource( 7 )
+VScrollBar/styles/scroll_focus = SubResource( 6 )

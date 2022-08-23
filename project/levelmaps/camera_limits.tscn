@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://levelmaps/camera_limits.gd" type="Script" id=1]
+
+[node name="CameraLimits" type="ReferenceRect"]
+margin_left = -408.0
+margin_top = -328.0
+margin_right = 440.0
+margin_bottom = 368.0
+script = ExtResource( 1 )

@@ -1,0 +1,146 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://interface/button_container.gd" type="Script" id=1]
+[ext_resource path="res://interface/menus/ui_menu_button.gd" type="Script" id=2]
+[ext_resource path="res://interface/game_theme.tres" type="Theme" id=3]
+[ext_resource path="res://interface/textures/greattree.png" type="Texture" id=4]
+[ext_resource path="res://interface/fonts/title_font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://interface/textures/witch.png" type="Texture" id=6]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 0.701961, 0.647059, 0.333333, 1 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -128.0
+texture = ExtResource( 4 )
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -64.0
+texture = ExtResource( 6 )
+
+[node name="MainMenu" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+custom_constants/separation = 0
+alignment = 1
+
+[node name="HeaderContainer" type="MarginContainer" parent="MainMenu"]
+margin_right = 640.0
+margin_bottom = 226.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+
+[node name="Label" type="Label" parent="MainMenu/HeaderContainer"]
+margin_right = 640.0
+margin_bottom = 226.0
+size_flags_vertical = 1
+size_flags_stretch_ratio = 3.0
+theme = ExtResource( 3 )
+theme_type_variation = "HeaderLabel"
+custom_colors/font_color = Color( 0.466667, 0.454902, 0.231373, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "The Great
+Tree"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_pinned_properties_": [ "text" ]
+}
+
+[node name="ContentContainer" type="MarginContainer" parent="MainMenu"]
+visible = false
+margin_top = 104.0
+margin_right = 250.0
+margin_bottom = 104.0
+
+[node name="ButtonContainer" type="VBoxContainer" parent="MainMenu"]
+margin_left = 227.0
+margin_top = 226.0
+margin_right = 413.0
+margin_bottom = 360.0
+rect_min_size = Vector2( 186, 0 )
+size_flags_horizontal = 4
+custom_constants/separation = 4
+alignment = 2
+script = ExtResource( 1 )
+
+[node name="NewGameButton" type="Button" parent="MainMenu/ButtonContainer"]
+margin_right = 186.0
+margin_bottom = 42.0
+size_flags_vertical = 3
+text = "NEW GAME"
+script = ExtResource( 2 )
+signal_name = "new_game_requested"
+
+[node name="AboutButton" type="Button" parent="MainMenu/ButtonContainer"]
+margin_top = 46.0
+margin_right = 186.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "ABOUT"
+script = ExtResource( 2 )
+signal_name = "about_menu_requested"
+
+[node name="BackButton" type="Button" parent="MainMenu/ButtonContainer"]
+visible = false
+margin_top = 92.0
+margin_right = 186.0
+margin_bottom = 134.0
+size_flags_vertical = 3
+text = "BACK TO GAME"
+script = ExtResource( 2 )
+signal_name = "game_state_exit_requested"
+
+[node name="MainMenuButton" type="Button" parent="MainMenu/ButtonContainer"]
+visible = false
+margin_top = 138.0
+margin_right = 186.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "MAIN MENU"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_pinned_properties_": [ "visible" ]
+}
+signal_name = "main_menu_requested"
+
+[node name="RestartButton" type="Button" parent="MainMenu/ButtonContainer"]
+visible = false
+margin_top = 92.0
+margin_right = 186.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "RESTART"
+script = ExtResource( 2 )
+signal_name = "restart_game_requested"
+
+[node name="QuitButton" type="Button" parent="MainMenu/ButtonContainer" groups=["hide_on_web"]]
+margin_top = 92.0
+margin_right = 186.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "QUIT"
+script = ExtResource( 2 )
+signal_name = "quit_requested"

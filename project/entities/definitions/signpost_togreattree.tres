@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://entities/entity.gd" type="Script" id=1]
+[ext_resource path="res://entities/textures/signpost2.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+display_name = "To the Forest"
+ink_path = "signpost_togreattree"
+interaction_verb = "follow path"
+sprite_texture = ExtResource( 2 )
+destroy_on_disable = false
