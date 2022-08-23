@@ -10,7 +10,7 @@ A short retro adventure game created for [Kenney Jam 2022](https://itch.io/jam/k
 ![Screenshot03](https://github.com/dandeliondino/the-great-tree/blob/master/screenshot03.png)]
 
 If you're interested in the Ink/GDScript integration, relevant files include:
-- [storyline.ink](https://github.com/dandeliondino/the-great-tree/blob/master/project/interface/dialogue/storyline.ink) (comment out the "-> DONE" to run in ink, it *sort of* works)
+- [storyline.ink](https://github.com/dandeliondino/the-great-tree/blob/master/project/interface/dialogue/storyline.ink)
 - [ink_manager.gd](https://github.com/dandeliondino/the-great-tree/blob/master/project/scripts/ink_manager.gd)
 - [dialogue_container.gd](https://github.com/dandeliondino/the-great-tree/blob/master/project/interface/dialogue/dialogue_container.gd)
 - [journal_panel.gd](https://github.com/dandeliondino/the-great-tree/blob/master/project/interface/journal/journal_panel.gd)
