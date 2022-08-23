@@ -63,23 +63,6 @@ func has_in_inventory(item : String, quantity : int):
 	return true
 
 
-func get_journal_quests():
-	inkPlayer.SwitchFlow("quest")
-	inkPlayer.ChoosePathString(JOURNAL_PATH)
-	
-	var quests = []
-	
-	while inkPlayer.CanContinue:
-		inkPlayer.Continue()
-		var s : String = inkPlayer.CurrentText
-		if "START_QUEST" in s:
-			var quest = get_quest_data()
-			quests.append(quest)
-	
-	inkPlayer.SwitchToDefaultFlow()
-	return quests
-
-
 func get_quest_json():
 	var quest_json : String = ""
 	var previous_flow = current_flow
@@ -92,36 +75,6 @@ func get_quest_json():
 	
 	inkPlayer.SwitchFlow(previous_flow)
 	return quest_json
-
-func get_quest(subpath_name):
-	var quest = null
-	
-	var previous_flow = current_flow
-	inkPlayer.SwitchFlow("quest")
-	
-	var path_name = "journal." + subpath_name
-	inkPlayer.ChoosePathString(path_name)
-	
-	while inkPlayer.CanContinue:
-		inkPlayer.Continue()
-		var s : String = inkPlayer.CurrentText
-		if "START_QUEST" in s:
-			quest = get_quest_data()
-			break
-	inkPlayer.SwitchFlow(previous_flow)
-	return quest
-	
-
-func get_quest_data():
-	var quest := {}
-	while inkPlayer.CanContinue:
-		inkPlayer.Continue()
-		var s : String = inkPlayer.CurrentText
-		if "END_QUEST" in s:
-#			print(quest)
-			return quest
-		var data = s.split(":", 1)
-		quest[data[0]] = data[1]
 
 
 func start_dialogue(path : String):
